@@ -1,21 +1,11 @@
 const express = require('express')
-const {soma, sub} = require('./exercicios')
+const { apiSomar, apiSub } = require('./api/operacoes')
 
 const app = express()
 app.use(express.json())
 
-app.post('/soma', (req, res)=>{
-
-    const {n1, n2} = req.body
-    const somar = soma(n1,n2)
-    res.status(200).send(somar)
-})
-app.post('/sub', (req, res)=>{
-
-    const {n1, n2} = req.body
-    const subt = sub(n1,n2)
-    res.status(200).send(subt)
-})
+app.post('/soma', apiSomar)
+app.post('/sub', apiSub)
 
 app.listen(3001)
 
